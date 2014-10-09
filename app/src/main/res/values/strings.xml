@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Budget Meeting Agenda</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sport1">Sport1</string>
+    <string name="title_activity_sport2">Sport2</string>
+    <string name="title_activity_sport3">Sport3</string>
+
+</resources>
