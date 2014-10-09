@@ -10,5 +10,6 @@
     <string name="title_activity_edit_info">EditInfo</string>
     <string name="title_activity_arm_length">ArmLength</string>
     <string name="title_activity_arm_length2">ArmLength2</string>
+    <string name="title_activity_sensors">Sensors</string>
 
 </resources>

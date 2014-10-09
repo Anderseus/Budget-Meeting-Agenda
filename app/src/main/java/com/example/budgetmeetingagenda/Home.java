@@ -22,6 +22,7 @@ public class Home extends Activity {
         Button button_02 = (Button)findViewById(R.id.button2);
         Button button_03 = (Button)findViewById(R.id.button3);
         Button button_04 = (Button)findViewById(R.id.button4);
+        Button button_05 = (Button)findViewById(R.id.button5);
 
         logo.setImageResource(R.drawable.spoderman);
         button_01.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +47,12 @@ public class Home extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), EditInfo.class));
+            }
+        });
+        button_05.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Sensors.class));
             }
         });
     }

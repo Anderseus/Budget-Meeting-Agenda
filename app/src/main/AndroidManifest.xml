@@ -40,6 +40,10 @@
             android:name=".ArmLength2"
             android:label="@string/title_activity_arm_length2" >
         </activity>
+        <activity
+            android:name=".Sensors"
+            android:label="@string/title_activity_sensors" >
+        </activity>
     </application>
 
 </manifest>
