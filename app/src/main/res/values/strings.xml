@@ -7,5 +7,8 @@
     <string name="title_activity_sport1">Sport1</string>
     <string name="title_activity_sport2">Sport2</string>
     <string name="title_activity_sport3">Sport3</string>
+    <string name="title_activity_edit_info">EditInfo</string>
+    <string name="title_activity_arm_length">ArmLength</string>
+    <string name="title_activity_arm_length2">ArmLength2</string>
 
 </resources>
