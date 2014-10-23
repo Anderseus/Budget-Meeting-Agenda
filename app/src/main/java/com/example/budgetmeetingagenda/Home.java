@@ -11,8 +11,12 @@ import android.widget.ImageView;
 
 
 public class Home extends Activity {
-
+    //what does a man do for his family...
+    //he provides...
+    //I_AM_THE_ONE_WHO_KNOCKS.mov
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
