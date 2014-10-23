@@ -210,8 +210,11 @@ public class Sensors extends Activity implements SensorEventListener {
 
                 num += 1;
             }
+            Log.d( "" , "hello" );
             if( count2 == 100 )
             {
+
+
 //                Log.d( "" , "X: " + orientationsX.toString() );
 //                Log.d( "" , "Y: " + orientationsY.toString() );
 //                Log.d( "" , "Z: " + orientationsZ.toString() );
