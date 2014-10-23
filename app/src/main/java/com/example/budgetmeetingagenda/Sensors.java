@@ -81,10 +81,24 @@ public class Sensors extends Activity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensors);
 
-        Button button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button_01 = (Button)findViewById(R.id.button);
+        button_01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Sensors.this, Home.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        Button button_02 = (Button)findViewById(R.id.button2);
+        button_02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ////
+                // save the files?
+                ////
+
                 Intent intent = new Intent(Sensors.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
