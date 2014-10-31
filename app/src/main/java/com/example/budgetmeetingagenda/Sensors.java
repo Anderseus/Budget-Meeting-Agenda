@@ -1,6 +1,7 @@
 package com.example.budgetmeetingagenda;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -76,6 +79,28 @@ public class Sensors extends Activity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensors);
+
+        Button button_01 = (Button)findViewById(R.id.button);
+        Button button_02 = (Button)findViewById(R.id.button2);
+
+        button_01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Sensors.this, Home.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        button_02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ////
+                // WRITE TO FILE HERE
+                ////
+                finish();
+            }
+        });
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
