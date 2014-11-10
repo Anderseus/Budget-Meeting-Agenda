@@ -54,7 +54,7 @@ public class Home extends Activity {
         });
         button_05.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Sensors.class));
             }
         });

@@ -1,11 +1,13 @@
 package com.example.budgetmeetingagenda;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +16,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +79,10 @@ public class Sensors extends Activity implements SensorEventListener {
     ArrayList<Float> averagesY = new ArrayList<Float>();
     ArrayList<Float> averagesZ = new ArrayList<Float>();
 
+    ArrayList<Float> positionsX = new ArrayList<Float>();
+    ArrayList<Float> positionsY = new ArrayList<Float>();
+    ArrayList<Float> positionsZ = new ArrayList<Float>();
+
     SensorManager sensorManager = null;
 
     @Override
@@ -120,9 +130,9 @@ public class Sensors extends Activity implements SensorEventListener {
         posY = (TextView) findViewById(R.id.textView11);
         posZ = (TextView) findViewById(R.id.textView12);
 
-        gyroX = (TextView) findViewById(R.id.textView13);
-        gyroY = (TextView) findViewById(R.id.textView14);
-        gyroZ = (TextView) findViewById(R.id.textView15);
+//        gyroX = (TextView) findViewById(R.id.textView13);
+//        gyroY = (TextView) findViewById(R.id.textView14);
+//        gyroZ = (TextView) findViewById(R.id.textView15);
     }
 
 
@@ -247,21 +257,57 @@ public class Sensors extends Activity implements SensorEventListener {
 //                orientationsY.clear();
 //                orientationsZ.clear();
 
-                Log.d( "" , "-X: " + accelerationsX.toString() );
-                Log.d( "" , "-Y: " + accelerationsY.toString() );
-                Log.d( "" , "-Z: " + accelerationsZ.toString() );
+//                Log.d( "" , "X: " + accelerationsX.toString() );
+//                Log.d( "" , "Y: " + accelerationsY.toString() );
+//                Log.d( "" , "Z: " + accelerationsZ.toString());
+
+                try {
+                    String name = "data.txt";
+                    int num = 1;
+                    File file;
+                    while( true ) {
+                        file = new File(((Context) this).getExternalFilesDir(null), name );
+                        if (!file.exists())
+                        {
+                            file.createNewFile();
+                            break;
+                        }
+                        else
+                        {
+                            name = "data" + num + ".txt";
+                            num += 1;
+                        }
+                    }
+                    BufferedWriter writer = new BufferedWriter( new FileWriter( file , true ) );
+                    writer.write(String.valueOf(positionsX));
+                    writer.write(String.valueOf(positionsY));
+                    writer.write(String.valueOf(positionsZ));
+                    writer.close();
+
+                    MediaScannerConnection.scanFile((Context) (this), new String[]{file.toString()}, null, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 accelerationsX.clear();
                 accelerationsY.clear();
                 accelerationsZ.clear();
 
-                Log.d( "" , "X: " + averagesX.toString() );
-                Log.d( "" , "Y: " + averagesY.toString() );
-                Log.d("", "Z: " + averagesZ.toString());
+//                Log.d( "" , "X: " + averagesX.toString() );
+//                Log.d( "" , "Y: " + averagesY.toString() );
+//                Log.d( "" , "Z: " + averagesZ.toString());
 
                 averagesX.clear();
                 averagesY.clear();
                 averagesZ.clear();
+
+                Log.d( "" , "X: " + positionsX.toString());
+                Log.d( "" , "X: " + positionsX.toString() );
+                Log.d( "" , "X: " + positionsX.toString() );
+
+                positionsX.clear();
+                positionsY.clear();
+                positionsZ.clear();
 
                 count2 = 0;
                 num = 0;
@@ -294,6 +340,9 @@ public class Sensors extends Activity implements SensorEventListener {
                         posY.setText( "Position Y: " + df.format( positionY ));
                         posZ.setText( "Position Z: " + df.format( positionZ ));
 
+                        positionsX.add((float) positionX);
+                        positionsY.add((float) positionY);
+                        positionsZ.add((float) positionZ);
                 }
                 count = 1;
                 count2++;
