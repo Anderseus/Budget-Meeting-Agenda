@@ -262,29 +262,42 @@ public class Sensors extends Activity implements SensorEventListener {
 //                Log.d( "" , "Z: " + accelerationsZ.toString());
 
                 try {
-                    String name = "data.txt";
+                    String name = "dataX.txt";
+                    String name2 = "dataY.txt";
+                    String name3 = "dataZ.txt";
                     int num = 1;
-                    File file;
+                    File file , file2 , file3;
                     while( true ) {
                         file = new File(((Context) this).getExternalFilesDir(null), name );
+                        file2 = new File(((Context) this).getExternalFilesDir(null), name2 );
+                        file3 = new File(((Context) this).getExternalFilesDir(null), name3 );
                         if (!file.exists())
                         {
                             file.createNewFile();
+                            file2.createNewFile();
+                            file3.createNewFile();
                             break;
                         }
                         else
                         {
-                            name = "data" + num + ".txt";
+                            name = "dataX" + num + ".txt";
+                            name2 = "dataY" + num + ".txt";
+                            name3 = "dataZ" + num + ".txt";
                             num += 1;
                         }
                     }
                     BufferedWriter writer = new BufferedWriter( new FileWriter( file , true ) );
-                    writer.write(String.valueOf(positionsX));
-                    writer.write(String.valueOf(positionsY));
-                    writer.write(String.valueOf(positionsZ));
+                    BufferedWriter writer2 = new BufferedWriter( new FileWriter( file2 , true ) );
+                    BufferedWriter writer3 = new BufferedWriter( new FileWriter( file3 , true ) );
+                    writer.write(" X: " + String.valueOf(positionsX));
+                    writer2.write(" Y: " + String.valueOf(positionsY));
+                    writer3.write(" Z: " + String.valueOf(positionsZ));
                     writer.close();
 
                     MediaScannerConnection.scanFile((Context) (this), new String[]{file.toString()}, null, null);
+                    MediaScannerConnection.scanFile((Context) (this), new String[]{file2.toString()}, null, null);
+                    MediaScannerConnection.scanFile((Context) (this), new String[]{file3.toString()}, null, null);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -302,8 +315,8 @@ public class Sensors extends Activity implements SensorEventListener {
                 averagesZ.clear();
 
                 Log.d( "" , "X: " + positionsX.toString());
-                Log.d( "" , "X: " + positionsX.toString() );
-                Log.d( "" , "X: " + positionsX.toString() );
+                Log.d( "" , "Y: " + positionsY.toString() );
+                Log.d( "" , "Z: " + positionsZ.toString() );
 
                 positionsX.clear();
                 positionsY.clear();
