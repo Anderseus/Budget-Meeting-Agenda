@@ -27,7 +27,7 @@ public class Home extends Activity {
         Button button_04 = (Button)findViewById(R.id.button4);
         Button button_05 = (Button)findViewById(R.id.button5);
 
-        logo.setImageResource(R.drawable.spoderman);
+        logo.setImageResource(R.drawable.ic_launcher);
         button_01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

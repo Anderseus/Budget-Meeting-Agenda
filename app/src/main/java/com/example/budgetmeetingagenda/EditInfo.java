@@ -39,9 +39,9 @@ public class EditInfo extends Activity {
         Button button_03 = (Button)findViewById(R.id.button3);
 
         final AlertDialog alert = new AlertDialog.Builder(this).create();
-        alert.setTitle("spoderman");
+        alert.setTitle("");
         alert.setMessage("Fill in all the required info");
-        alert.setIcon(R.drawable.spoderman);
+        alert.setIcon(R.drawable.ic_launcher);
         alert.setButton("OK" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
